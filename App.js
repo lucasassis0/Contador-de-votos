@@ -1,21 +1,26 @@
-import React, { useState } from 'react';
-import {Text, SafeAreaView, Button, View} from 'react-native'
+import React from 'react';
+import { Text, View, Button } from 'react-native';
 
-function votos(){
-  const [totalDeVotos, setVoto] = useState(0);
+class votos extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      c1: 0,
+      c2: 0      
+    } 
+  }
 
-  return (
-    <View>
-      <Text>O total de votos é {totalDeVotos}!</Text>
-      <Button onPress={()=>{setVoto(totalDeVotos + 1)}} title="Votar"/>
-    </View>
-  )
+  render(){
+    return(
+      <View>
+        <Text>Eleições 2020</Text>
+        <Text>Candidato A: {this.state.c1}</Text>
+        <Button onPress={()=>{this.setState({c1: this.state.c1 + 1})}} title="Votar"></Button>
+        <Text>Candidato B: {this.state.c2}</Text>
+        <Button onPress={()=>{this.setState({c2: this.state.c2 + 1})}} title="Votar"></Button>
+      </View>
+    )
+  }
 }
 
-export default function votacao(){
-  return (
-    <SafeAreaView>
-      {votos()}
-    </SafeAreaView>
-  )
-}
+export default votos;
